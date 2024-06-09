@@ -4,4 +4,8 @@ function sinh_configure_bindings --description "Installs the default key binding
     # no need to install bindings if not in interactive mode or running tests
     status is-interactive || test "$CI" = true; or return
 
+    for mode in default insert
+        test -n  \e\cw && bind --mode $mode \e\cw _sinh_git_repos_status
+    end
+
 end
