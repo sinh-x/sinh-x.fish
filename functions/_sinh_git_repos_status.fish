@@ -17,7 +17,7 @@ function _sinh_git_repos_status --description "Check all folder set in sinh_git_
   if not set --query sinh_git_folders
     echo 'Please set sinh_git_folders variable in you config.fish with list of folders to check'
   else
-    $sinh_git_folders | while read i;
+    for i in $sinh_git_folders;
       set repos_changed $repos_changed (sinh_gstatus $i)
     end
 
