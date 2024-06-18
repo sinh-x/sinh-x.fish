@@ -23,13 +23,8 @@ function _sinh_fzf_git_repos_status --description "Take the output of _sinh_git_
 
     # If a selection was made in fzf
     if test $status -eq 0
-        # Loop over each line of the selection
-        for line in $selected_path
-            # Split the line into fields and store the first field (the path) in the path variable
-            set -f path $line
-        end
         # Replace the current command line token with a cd command to the selected path
-        commandline --replace -- "$path"
+        commandline --replace -- "$selected_path"
     end
 
   commandline --function repaint
