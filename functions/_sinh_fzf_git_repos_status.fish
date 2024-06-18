@@ -29,6 +29,6 @@ function _sinh_fzf_git_repos_status --description "Take the output of _sinh_git_
             set -f path $line
         end
         # Replace the current command line token with a cd command to the selected path
-        commandline --current-token --replace (string join " " "cd" "$path")
+        commandline --current-token "$path"
     end
 end
