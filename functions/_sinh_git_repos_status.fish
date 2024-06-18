@@ -18,7 +18,7 @@ function _sinh_git_repos_status --description "Check all folder set in sinh_git_
             set count (git -C $path status --porcelain | wc -l)
 
             # Get the number of commits that are in the local branch but not in the upstream branch.
-            set unpushed (git -C $path rev-list --count --left-right @{upstream}..HEAD 2>/dev/null)
+            set unpushed (git -C $path rev-list --count --left-right @{upstream}...HEAD 2>/dev/null)
 
             # Split the output of the previous command into two variables.
             set unpushed_local (echo $unpushed | awk '{print $2}')
