@@ -18,7 +18,8 @@ function _sinh_fzf_git_repos_status --description "Take the output of _sinh_git_
        --bind 'enter:become(echo {1})' \
        --header-lines=1 \
        --query=(commandline --current-token) \
-       --preview 'git -C {1} status'
+       --preview 'git -C {1} status --ignored' \
+      --preview-window=right:40%:wrap \
   )
 
     # If a selection was made in fzf
@@ -27,5 +28,5 @@ function _sinh_fzf_git_repos_status --description "Take the output of _sinh_git_
         commandline --replace -- "$selected_path"
     end
 
-  commandline --function repaint
+    commandline --function repaint
 end
