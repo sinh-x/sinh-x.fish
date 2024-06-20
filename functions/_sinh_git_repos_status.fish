@@ -1,4 +1,4 @@
-# Define a function that checks all folders set in sinh_git_folders and lists all git repos having changes within those folders.
+H Define a function that checks all folders set in sinh_git_folders and lists all git repos having changes within those folders.
 function _sinh_git_repos_status --description "Check all folder set in sinh_git_folders and list all git repos having changes within those folders."
 
     # Define a helper function that checks a single git repository for changes.
@@ -37,9 +37,10 @@ function _sinh_git_repos_status --description "Check all folder set in sinh_git_
     end
 
     # Check if the sinh_git_folders variable is set.
-    if not set --query sinh_git_folders
+    if not set --query sinh_git_folders; or test -z $sinh_git_folders
         # If not, print a message asking the user to set it.
-        echo 'Please set sinh_git_folders variable in you config.fish with list of folders to check'
+        echo 'Please set sinh_git_folders variable in you config.fish with list of folders to check or'
+        echo "create ~/config/sinh-x-local/sinh_git_folders.txt with list of folders to check."
     else
         # If sinh_git_folders is set, check all the folders it contains.
         set repos_changed "Path | Uncommitted Changes | Local Commits | Upstream Commits"
