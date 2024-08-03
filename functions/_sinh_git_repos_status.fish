@@ -24,6 +24,20 @@ function _sinh_git_repos_status --description "Check all folder set in sinh_git_
             set unpushed_local (echo $unpushed | awk '{print $2}')
             set unpushed_upstream (echo $unpushed | awk '{print $1}')
 
+              # Before using $count, check if it's empty. If it is, set it to 0.
+              if test -z "$count"
+                  set count 0
+              end
+
+              # Do the same for $unpushed_local.
+              if test -z "$unpushed_local"
+                  set unpushed_local 0
+              end
+
+              # And for $unpushed_upstream.
+              if test -z "$unpushed_upstream"
+                  set unpushed_upstream 0
+              end
             # If there are uncommitted changes or unpushed commits, print the path and the counts.
             if test "$count" -gt 0 -o "$unpushed_local" -gt 0 -o "$unpushed_upstream" -gt 0
                 echo $path "|" $count "|" $unpushed_local "|" $unpushed_upstream
